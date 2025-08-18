@@ -1,0 +1,16 @@
+{
+  "name": "backmagic",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["SENAI", "HarryPotter", "Backand"],
+  "author": "Fabio",
+  "license": "MIT",
+  "description": "Um projeto de Backend com tema Harry Potter usando nodemon e express",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
