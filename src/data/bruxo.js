@@ -98,5 +98,55 @@ export default [
       mascote: "Fênix (Fawkes)",
       patrono: "não conhecido",
       especialidade: "Magia Avançada e Estratégia"
+    },
+    {
+      id: 11,
+      nome: "Fred Weasley",
+      casa: "Grifinória",
+      ano: "7º",
+      varinha: "Freixo e pelo de unicórnio, 30 cm",
+      mascote: "não conhecido",
+      patrono: "não conhecido",
+      especialidade: "Inventos e Piadas Mágicas"
+    },
+    {
+      id: 12,
+      nome: "George Weasley",
+      casa: "Grifinória",
+      ano: "7º",
+      varinha: "Freixo e pelo de unicórnio, 30 cm",
+      mascote: "não conhecido",
+      patrono: "não conhecido",
+      especialidade: "Inventos e Piadas Mágicas"
+    },
+    {
+      id: 13,
+      nome: "Ginny Weasley",
+      casa: "Grifinória",
+      ano: "7º",
+      varinha: "Álamo e pelo de unicórnio, 29 cm",
+      mascote: "não conhecido",
+      patrono: "Cavalo",
+      especialidade: "Quadribol e Feitiçaria Avançada"
+    },
+    {
+      id: 14,
+      nome: "Sirius Black",
+      casa: "Grifinória",
+      ano: "não conhecido",
+      varinha: "Álamo e pelo de unicórnio, 31 cm",
+      mascote: "Cão (Padfoot)",
+      patrono: "Cão (Padfoot)",
+      especialidade: "Transfiguração e Defesa Contra as Artes das Trevas"
+    },
+    {
+      id: 15,
+      nome: "Remus Lupin",
+      casa: "Grifinória",
+      ano: "não conhecido",
+      varinha: "não conhecido",
+      mascote: "não conhecido",
+      patrono: "Lobo",
+      especialidade: "Defesa Contra as Artes das Trevas"
     }
-  ]
+  ];  

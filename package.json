@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon server.js"
   },
-  "keywords": ["SENAI", "HarryPotter", "Backand"],
+  "keywords": ["SENAI", "HarryPotter", "Backand", "get"],
   "author": "Fabio",
   "license": "MIT",
   "description": "Um projeto de Backend com tema Harry Potter usando nodemon e express",
