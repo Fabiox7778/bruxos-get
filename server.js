@@ -1,4 +1,3 @@
-
 import express from "express";
 import bruxo from "./src/data/bruxo.js";
 
@@ -82,7 +81,7 @@ app.get("/bruxos/nome/:nome", (req, res) => {
         res.status(200).json(bruxosEncontrados);
     } else {
         res.status(404).json({
-            mensagem: "bruxo não encontrado"
+            mensagem: "bruxo com esse nome não encontrado"
         })
     }
 
@@ -103,6 +102,15 @@ app.get("/bruxos/casa/:casa", (req, res) => {
 
 });
 
+app.get("/bruxos/vivos/nao", (req, res) => {
+    const resultado = bruxo.filter((b) => !b.status);
+
+    if (resultado) {
+        res.status(200).json(resultado)
+    } else (
+        res.status(404).json({ erro: "nenhum bruxo morto encontrado"})
+    )
+});
 
 app.listen(serverPort, () => {
     console.log(`⚡ Servidor Hogwarts iniciado em: http://localhost:${serverPort}`);
