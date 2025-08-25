@@ -134,7 +134,7 @@ app.get('/varinhas', (req, res) => {
         res.status(200).json(varinhas);
     } else {
         res.status(404).json({
-            mensagem: "varinha com esse nome não encontrado"
+            mensagem: "Varinhas não encontradas"
         });
     }
 });
@@ -148,7 +148,7 @@ app.get("/varinhas/:id", (req, res) => {
         res.status(200).json(varinhasId);
     } else {
         res.status(404).json({
-            mensagem: "varinha não encontrada"
+            mensagem: "Varinha não encontrada"
         });
     }
 });
@@ -158,7 +158,7 @@ app.get('/animais', (req, res) => {
         res.status(200).json(animais);
     } else {
         res.status(404).json({
-            mensagem: "animal com esse nome não encontrado"
+            mensagem: "Animais não encontradas"
         });
     }
 });
@@ -182,7 +182,7 @@ app.get('/pocoes', (req, res) => {
         res.status(200).json(pocoes);
     } else {
         res.status(404).json({
-            mensagem: "poção com esse nome não encontrado"
+            mensagem: "Poções não encontradas"
         });
     }
 });
