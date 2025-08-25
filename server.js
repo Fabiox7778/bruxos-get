@@ -1,5 +1,7 @@
 import express from "express";
-import bruxo from "./src/data/bruxo.js";
+import dados from "./src/data/dados.js";
+
+const { bruxos, casas, varinhas, animais, pocoes } = dados;
 
 const serverPort = 3000;
 const app = express().use(express.json());
@@ -35,23 +37,38 @@ app.get('/', (req, res) => {
       <div style="margin-top: 30px;">
         <span style="font-size: 1.1rem;">🦁 Grifinória | 🐍 Sonserina | 🦅 Corvinal | 🦡 Lufa-lufa</span>
       </div>
+
+      <p style="font-size: 1.5rem; margin: 20px 0;">
+  🧙 <a href="http://localhost:3000/bruxos" style="color: #ffffffff; text-decoration: none;">Veja os bruxos por aqui!</a> 🧙
+</p>
+        <p style="font-size: 1.5rem; margin: 20px 0;">
+  🏰 <a href="http://localhost:3000/casas" style="color: #ffffffff; text-decoration: none;">Veja as casas por aqui!</a> 🏰
+</p>
+        <p style="font-size: 1.5rem; margin: 20px 0;">
+  🪄 <a href="http://localhost:3000/varinhas" style="color: #ffffffff; text-decoration: none;">Veja as varinhas por aqui!</a> 🪄
+</p>
+        <p style="font-size: 1.5rem; margin: 20px 0;">
+  🐶 <a href="http://localhost:3000/animais" style="color: #ffffffff; text-decoration: none;">Veja as animais por aqui!</a> 🐶
+</p>
+        <p style="font-size: 1.5rem; margin: 20px 0;">
+  🍷 <a href="http://localhost:3000/pocoes" style="color: #ffffffff; text-decoration: none;">Veja as poções por aqui!</a> 🍷
+</p>
     </div>
   `);
 });
 
 app.get('/casas', (req, res) => {
-    res.json({
-        casas: [
-            { nome: "Grifinória", animal: "🦁", fundador: "Godrico Gryffindor" },
-            { nome: "Sonserina", animal: "🐍", fundador: "Salazar Slytherin" },
-            { nome: "Corvinal", animal: "🦅", fundador: "Rowena Ravenclaw" },
-            { nome: "Lufa-lufa", animal: "🦡", fundador: "Helga Hufflepuff" }
-        ]
-    });
+    if (casas.length > 0) {
+        res.status(200).json(casas);
+    } else {
+        res.status(404).json({
+            mensagem: "casa com esse nome não encontrado"
+        });
+    }
 });
 
 app.get("/bruxos", (req, res) => {
-    res.json(bruxo)
+    res.json(bruxos)
 });
 
 app.get("/bruxos/:id", (req, res) => {
@@ -61,10 +78,10 @@ app.get("/bruxos/:id", (req, res) => {
 
     id = parseInt(id);
 
-    const bruxos = bruxo.find(b => b.id === id);
+    const bruxo = bruxos.find(b => b.id === id);
 
-    if (bruxos) {
-        res.status(200).json(bruxos);
+    if (bruxo) {
+        res.status(200).json(bruxo);
     } else {
         res.status(404).json({
             mensagem: "bruxo não encontrado"
@@ -75,7 +92,7 @@ app.get("/bruxos/:id", (req, res) => {
 app.get("/bruxos/nome/:nome", (req, res) => {
     let nome = req.params.nome.toLowerCase();
 
-    const bruxosEncontrados = bruxo.filter(b => b.nome.toLowerCase().includes(nome));
+    const bruxosEncontrados = bruxos.filter(b => b.nome.toLowerCase().includes(nome));
 
     if (bruxosEncontrados.length > 0) {
         res.status(200).json(bruxosEncontrados);
@@ -85,12 +102,12 @@ app.get("/bruxos/nome/:nome", (req, res) => {
         })
     }
 
-})
+});
 
 app.get("/bruxos/casa/:casa", (req, res) => {
     let casa = req.params.casa;
 
-    const bruxosDaCasa = bruxo.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
+    const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
 
     if (bruxosDaCasa.length > 0) {
         res.status(200).json(bruxosDaCasa);
@@ -103,7 +120,7 @@ app.get("/bruxos/casa/:casa", (req, res) => {
 });
 
 app.get("/bruxos/vivos/nao", (req, res) => {
-    const resultado = bruxo.filter((b) => !b.status);
+    const resultado = bruxos.filter((b) => !b.status);
 
     if (resultado) {
         res.status(200).json(resultado)
@@ -112,7 +129,79 @@ app.get("/bruxos/vivos/nao", (req, res) => {
     )
 });
 
+app.get('/varinhas', (req, res) => {
+    if (varinhas.length > 0) {
+        res.status(200).json(varinhas);
+    } else {
+        res.status(404).json({
+            mensagem: "varinha com esse nome não encontrado"
+        });
+    }
+});
+
+app.get("/varinhas/:id", (req, res) => {
+    let id = req.params.id;
+    id = parseInt(id);
+    const varinhasId = varinhas.find(b => b.id === id);
+
+    if (varinhas.length > 0) {
+        res.status(200).json(varinhasId);
+    } else {
+        res.status(404).json({
+            mensagem: "varinha não encontrada"
+        });
+    }
+});
+
+app.get('/animais', (req, res) => {
+    if (animais.length > 0) {
+        res.status(200).json(animais);
+    } else {
+        res.status(404).json({
+            mensagem: "animal com esse nome não encontrado"
+        });
+    }
+});
+
+app.get("/animais/:id", (req, res) => {
+    let id = req.params.id;
+    id = parseInt(id);
+    const animaisId = animais.find(b => b.id === id);
+
+    if (animais.length > 0) {
+        res.status(200).json(animaisId);
+    } else {
+        res.status(404).json({
+            mensagem: "Animal não encontrada"
+        });
+    }
+});
+
+app.get('/pocoes', (req, res) => {
+    if (pocoes.length > 0) {
+        res.status(200).json(pocoes);
+    } else {
+        res.status(404).json({
+            mensagem: "poção com esse nome não encontrado"
+        });
+    }
+});
+
+app.get("/pocoes/:id", (req, res) => {
+    let id = req.params.id;
+    id = parseInt(id);
+    const pocoesId = pocoes.find(b => b.id === id);
+
+    if (pocoes.length > 0) {
+        res.status(200).json(pocoesId);
+    } else {
+        res.status(404).json({
+            mensagem: "Poção não encontrada"
+        });
+    }
+});
+
 app.listen(serverPort, () => {
     console.log(`⚡ Servidor Hogwarts iniciado em: http://localhost:${serverPort}`);
     console.log(`🏰 Pronto para receber novos magos!`);
-});
+}); 
